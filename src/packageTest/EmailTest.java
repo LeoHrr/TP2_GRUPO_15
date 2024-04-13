@@ -4,6 +4,8 @@ package packageTest;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+import frgp.utn.edu.ar.entidad.Email;
+
 
 public class EmailTest {
 	
@@ -13,7 +15,6 @@ public class EmailTest {
 		String ejemploCorreo ="ejemplo@gmail.com";	
 		int digitos = ejemploCorreo.length();
 
-		
 		assertTrue(digitos>=8, "El correo tiene menos de 8 digitos.");
 	}
 	
@@ -39,5 +40,19 @@ public class EmailTest {
 		assertFalse(ejemploCorreo4.matches(".*\\d.*"));
 
 	}
+	
+    @Test
+    public void testValidarCorreo_conLetraMayuscula_retornaTrue() {
+    	String ejemploCorreo = "Test@dominio.com";
+        assertTrue(ejemploCorreo.matches(".*[A-Z].*"));
+    }
+
+    @Test
+    public void testValidarCorreo_sinLetraMayuscula_retornaFalse() {
+    	String ejemploCorreo = "test@dominio.com";
+        assertFalse(Email.validarCorreo(ejemploCorreo));
+    }
+	
+	
 
 }
