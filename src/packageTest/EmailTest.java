@@ -28,18 +28,40 @@ public class EmailTest {
 	}
 	
 	@Test
-	public void testValidarCorreo_ConNumero_retornaTrue() {
-		String ejemploCorreo3 = "test99@dominio.com";
-		assertTrue(ejemploCorreo3.matches(".*\\d.*"));
+	public void testValidarCorreo_ConUnNumero_retornaTrue() {
+		String correo = "Test1@dominio.com";
+		assertTrue(Email.validarCorreo(correo));
 		
 	}
 	
 	@Test
-	public void testValidarCorreo_ConNumero_retornaFalse() {
-		String ejemploCorreo4 = "test@dominio.com";
-		assertFalse(ejemploCorreo4.matches(".*\\d.*"));
+	public void testValidarCorreo_ConTresNumero_retornaTrue() {
+		String correo = "1Te2st3@dominio.com";
+		assertTrue(Email.validarCorreo(correo));
+		
+	}
+	
+	@Test
+	public void testValidarCorreo_ConMuchosNumero_retornaTrue() {
+		String correo = "129381287932179872198Test32894723984879@dominio.com";
+		assertTrue(Email.validarCorreo(correo));
+		
+	}
+	
+	@Test
+	public void testValidarCorreo_ConSolosNumero_retornaFalse() {
+		String correo = "1221321321@1232132231";
+		assertFalse(Email.validarCorreo(correo));
+		
+	}
+	
+	@Test
+	public void testValidarCorreo_SinNumero_retornaFalse() {
+		String correo = "Test@dominio.com";
+		assertFalse(Email.validarCorreo(correo));
 
 	}
+	
 	
     @Test
     public void testValidarCorreo_conLetraMayuscula_retornaTrue() {
