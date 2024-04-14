@@ -64,17 +64,27 @@ public class EmailTest {
 	
 	
     @Test
-    public void testValidarCorreo_conLetraMayuscula_retornaTrue() {
-    	String ejemploCorreo = "Test@dominio.com";
-        assertTrue(ejemploCorreo.matches(".*[A-Z].*"));
+    public void testValidarCorreo_ConLetraMayuscula_retornaTrue() {
+    	String ejemploCorreo = "Testing9@dominio.com";
+        assertTrue(Email.validarCorreo(ejemploCorreo));
     }
 
     @Test
     public void testValidarCorreo_sinLetraMayuscula_retornaFalse() {
-    	String ejemploCorreo = "test@dominio.com";
+    	String ejemploCorreo = "testing9@dominio.com";
         assertFalse(Email.validarCorreo(ejemploCorreo));
     }
 	
+    @Test
+    public void testValidarCorreo_conAlmenosUnaLetraMinnuscula_retornaTrue() {
+    	String ejemploCorreo = "GaSTON97@GMAIL.COM";
+        assertTrue(Email.validarCorreo(ejemploCorreo));
+    }
+    @Test
+    public void testValidarCorreo_SinUnaLetraMinnuscula_retornaFalse() {
+    	String ejemploCorreo = "GASTON97@GMAIL.COM";
+        assertFalse(Email.validarCorreo(ejemploCorreo));
+    }
 	
 
 }
